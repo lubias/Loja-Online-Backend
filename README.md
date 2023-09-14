@@ -93,7 +93,71 @@ const dbConfig = {
 ##### Inicie o projeto:
 ```$ npm run dev```
 
+## Tecnologias
+![Node.JS](https://img.shields.io/badge/-node.js-43853d?style=for-the-badge&logo=node.js&logoColor=FFFFFF&labelColor=026e00)&nbsp;
+![Express.JS](https://img.shields.io/badge/-express.js-868686?style=for-the-badge&logo=express&logoColor=FFFFFF&labelColor=4f4f4f)&nbsp;
+![MySQL](https://img.shields.io/badge/-mysql-00758f?style=for-the-badge&logo=mysql&logoColor=FFFFFF&labelColor=005d72)&nbsp;
+
 ## Documentação da API
+
+#### CLIENTES
+###### Retornar todos os clientes
+```
+  GET /clientes
+```
+###### Retornar um cliente pelo id
+```
+  GET /clientes/${id}
+```
+| Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
+| :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`        | `int`      | **Obrigatório**                                | **Não**                                |
+
+###### Criar um cliente
+```
+  POST /clientes
+```
+| Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
+| :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `nome`      | `string`   | **Obrigatório**                                | **Sim**                                |
+| `email`     | `string`   | **Obrigatório**                                | **Sim**                                |
+| `password`  | `float`    | **Obrigatório**                                | **Sim**                                |
+
+###### Exemplo
+```json
+{
+	"nome": "Teste",
+	"email":"teste@teste.com",
+	"password":"12345678"
+}
+```
+###### Editar um cliente pelo id
+```
+  PUT /clientes/${id}
+```
+| Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
+| :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`        | `int`      | **Obrigatório**                                | **Não**                                |
+| `nome`      | `string`   | **Opcional**                                   | **Sim**                                |
+| `email`     | `string`   | **Opcional**                                   | **Sim**                                |
+| `password`  | `float`    | **Opcional**                                   | **Sim**                                |
+
+###### Exemplo
+```json
+{
+	"email":"teste2@teste.com"
+}
+```
+###### Apagar um cliente pelo id
+```
+  DELETE /clientes/${id}
+```
+| Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
+| :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`        | `int`      | **Obrigatório**                                | **Não**                                |
+
+---
+
 #### PRODUTOS
 ###### Retornar todos os produtos
 ```
@@ -149,3 +213,94 @@ const dbConfig = {
 | Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
 | :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
 | `id`        | `int`      | **Obrigatório**                                | **Não**                                |
+
+---
+
+#### ESTOQUE
+###### Retornar o estoque de todos os produtos
+```
+  GET /estoque
+```
+
+###### Retornar o estoque de um produto pelo seu id
+```
+  GET /estoque/${id}
+```
+| Parâmetro    | Tipo       | Descrição                                      | Body?                                  |
+| :----------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`         | `int`      | **Obrigatório** - ID do produto                | **Não**                                |
+
+
+###### Corrigir o estoque de um produto pelo id
+```
+  PUT /estoque/corrigir/${id}
+```
+| Parâmetro    | Tipo       | Descrição                                      | Body?                                  |
+| :----------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`         | `int`      | **Obrigatório**                                | **Não**                                |
+| `quantidade` | `int`      | **Obrigatório**                                | **Sim**                                |
+
+###### Exemplo
+```json
+{
+	"quantidade": 5
+}
+```
+
+###### Atualizar o estoque de um produto pelo id
+```
+  PUT /estoque/atualizar/${id}
+```
+| Parâmetro    | Tipo       | Descrição                                      | Body?                                  |
+| :----------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`         | `int`      | **Obrigatório**                                | **Não**                                |
+| `quantidade` | `int`      | **Obrigatório**                                | **Sim**                                |
+
+###### Exemplo
+```json
+{
+	"quantidade": 2
+}
+```
+
+---
+#### VENDAS
+###### Retornar todos as vendas
+```
+  GET /vendas
+```
+###### Retornar uma venda pelo id
+```
+  GET /vendas/${id}
+```
+| Parâmetro   | Tipo       | Descrição                                      | Body?                                  |
+| :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `id`        | `int`      | **Obrigatório**                                | **Não**                                |
+
+###### Criar uma venda
+```
+  POST /vendas
+```
+| Parâmetro    | Tipo       | Descrição                                      | Body?                                  |
+| :----------- | :--------- | :--------------------------------------------- | :------------------------------------- |
+| `produtos`   | `array`   | **Obrigatório**                                | **Sim**                                |
+| `produto_id` | `int`      | **Obrigatório**                                | **Sim**                                |
+| `quantidade` | `int`      | **Obrigatório**                                | **Sim**                                |
+| `preco`      | `float`    | **Obrigatório**                                | **Sim**                                |
+| `cliente_id` | `int`      | **Obrigatório**                                | **Sim**                                |
+
+###### Exemplo
+```json
+{
+	"produtos":[
+		{
+			"produto_id": 2,
+			"quantidade":1,
+			"preco": 1000.00
+		}
+	],
+	"cliente_id": 1
+}
+```
+
+## Modelo entidade relacionamento
