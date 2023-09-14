@@ -304,3 +304,6 @@ const dbConfig = {
 ```
 
 ## Modelo entidade relacionamento
+![DER](https://github.com/lubias/Loja-Online-Backend/blob/master/public/DER.png)
+
+## Demonstração
