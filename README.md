@@ -307,3 +307,4 @@ const dbConfig = {
 ![DER](https://github.com/lubias/Loja-Online-Backend/blob/master/public/DER.png)
 
 ## Demonstração
+![Demonstração](https://github.com/lubias/Loja-Online-Backend/blob/master/public/Insomnia-2023-09-14-17-58-30.gif)
