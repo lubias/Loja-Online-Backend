@@ -6,7 +6,7 @@ const axios = require("axios");
 router.use(express.json());
 router.use(connectDatabase);
 
-router.post("/gravar", async function (req, res) {
+router.post("/", async function (req, res) {
   const db = req.dbConnection;
   const { produtos, cliente_id } = req.body;
   let estoque_ok = true;
@@ -14,7 +14,7 @@ router.post("/gravar", async function (req, res) {
   for (const element of produtos) {
     try {
       const response = await axios.get(
-        `http://localhost:4000/estoque/obter/${element.produto_id}`
+        `http://localhost:4000/estoque/${element.produto_id}`
       );
       const result = response.data.result;
       const quantidade = result.quantidade;
@@ -95,7 +95,7 @@ router.post("/gravar", async function (req, res) {
   }
 });
 
-router.get("/obter/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   const db = req.dbConnection;
   const id = req.params.id;
 
@@ -117,7 +117,7 @@ router.get("/obter/:id", (req, res) => {
   });
 });
 
-router.get("/obter", (req, res) => {
+router.get("/", (req, res) => {
   const db = req.dbConnection;
 
   db.query("SELECT * FROM estoque", (err, results) => {

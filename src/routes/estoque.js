@@ -68,11 +68,11 @@ router.put("/atualizar/:id", (req, res) => {
   );
 });
 
-router.get("/obter/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   const db = req.dbConnection;
   const id = req.params.id;
 
-  const sql = "SELECT * FROM estoque WHERE id = ?";
+  const sql = "SELECT * FROM estoque WHERE produto_id = ?";
 
   db.query(sql, [id], (err, results) => {
     if (err) {
@@ -86,7 +86,7 @@ router.get("/obter/:id", (req, res) => {
   });
 });
 
-router.get("/obter", (req, res) => {
+router.get("/", (req, res) => {
   const db = req.dbConnection;
 
   db.query("SELECT * FROM estoque", (err, results) => {

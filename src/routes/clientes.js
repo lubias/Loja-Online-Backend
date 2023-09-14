@@ -5,7 +5,7 @@ const connectDatabase = require("../middleware/conectarBD");
 router.use(express.json());
 router.use(connectDatabase);
 
-router.post("/criar", (req, res) => {
+router.post("/", (req, res) => {
   const db = req.dbConnection;
   const { nome, email, password } = req.body;
 
@@ -24,7 +24,7 @@ router.post("/criar", (req, res) => {
   });
 });
 
-router.get("/obter", (req, res) => {
+router.get("/", (req, res) => {
   const db = req.dbConnection;
 
   db.query("SELECT * FROM clientes", (err, results) => {
@@ -39,7 +39,7 @@ router.get("/obter", (req, res) => {
   });
 });
 
-router.get("/obter/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   const db = req.dbConnection;
   const id = req.params.id;
 
@@ -57,7 +57,7 @@ router.get("/obter/:id", (req, res) => {
   });
 });
 
-router.put("/editar/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   const db = req.dbConnection;
   const id = req.params.id;
   const updatedFields = req.body;
@@ -77,7 +77,7 @@ router.put("/editar/:id", (req, res) => {
   });
 });
 
-router.delete("/apagar/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   const db = req.dbConnection;
   const id = req.params.id;
 
