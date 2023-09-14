@@ -121,7 +121,7 @@ const dbConfig = {
 | :---------- | :--------- | :--------------------------------------------- | :------------------------------------- |
 | `nome`      | `string`   | **Obrigatório**                                | **Sim**                                |
 | `email`     | `string`   | **Obrigatório**                                | **Sim**                                |
-| `password`  | `float`    | **Obrigatório**                                | **Sim**                                |
+| `password`  | `string`    | **Obrigatório**                                | **Sim**                                |
 
 ###### Exemplo
 ```json
@@ -140,7 +140,7 @@ const dbConfig = {
 | `id`        | `int`      | **Obrigatório**                                | **Não**                                |
 | `nome`      | `string`   | **Opcional**                                   | **Sim**                                |
 | `email`     | `string`   | **Opcional**                                   | **Sim**                                |
-| `password`  | `float`    | **Opcional**                                   | **Sim**                                |
+| `password`  | `string`   | **Opcional**                                   | **Sim**                                |
 
 ###### Exemplo
 ```json
